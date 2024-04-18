@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: object-detector-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: object-detector-service
+  template:
+    metadata:
+      labels:
+        app: object-detector-service
+    spec:
+      containers:
+      - name: object-detector-service
+        image: bgah0001/cloud_detect:latest
+        ports:
+        - containerPort: 1024
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "0.5"
+          limits:
+            memory: "512Mi"
+            cpu: "0.5"
